@@ -1,3 +1,5 @@
+# Programa para determinar la densidad de la disolución y de los sólidos
+
 # Paqueterías
 library ( plotrix ) # Para obtener la incertidumbre
 
