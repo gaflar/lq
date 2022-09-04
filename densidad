@@ -1,0 +1,19 @@
+# Paqueterías
+library ( plotrix ) # Para obtener la incertidumbre
+
+# Datos
+datos <- c(11,21,19,18,51,51,71) # << Insertar datos aquí (g/ml)
+
+# Estadística
+prom = mean(datos) # Promedio (g/ml)
+c_prom = prom*1000 # Promedio (kg/cm^3)
+desvm = sd(datos) # Desviación estándar (g/ml)
+c_desvm = desvm*1000 # Desviación estándar (kg/cm^3)
+inc = std.error (datos) # Incertidumbre (g/ml)
+c_inc = inc*1000 # Incertidumbre (kg/cm^3)
+
+# Resultados
+cat("Densidad promedio:", prom , "g/ml =", c_prom, "kg/m^3 \n")
+cat("Desviación estándar:", desvm , "g/ml =", c_desvm, "kg/m^3 \n")
+cat("Incertidumbre:", inc , "g/ml =", c_inc, "kg/m^3 \n")
+cat("La densidad de la disolución es:", prom, "+-" , inc, "g/ml =", c_prom, "+-", c_inc, "kg/m^3" )
