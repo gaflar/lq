@@ -27,8 +27,8 @@ cat("La densidad de la disolución es:", prom, "+-" , inc, "g/ml =", c_prom, "+-
 ###################################
 
 # Datos
-Concentracion <- c(10,15,20,25,30,35) << Insertar datos aquí
-Densidad <- c(1.037141,1.055616,1.084557,1.115044,1.109821,1.113654) << Insertar datos aquí
+Concentracion <- c(10,15,20,25,30,35) # << Insertar datos aquí
+Densidad <- c(1.037141,1.055616,1.084557,1.115044,1.109821,1.113654) # << Insertar datos aquí
 
 Datos <- data.frame(Concentracion,Densidad)
 
