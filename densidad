@@ -29,14 +29,10 @@ cat("La densidad de la disolución es:", prom, "+-" , inc, "g/ml =", c_prom, "+-
 # Datos
 Concentracion <- c(10,15,20,25,30,35) # << Insertar datos aquí
 Densidad <- c(1.037141,1.055616,1.084557,1.115044,1.109821,1.113654) # << Insertar datos aquí
-
 Datos <- data.frame(Concentracion,Densidad)
 
-# Ecuación de regresión estimada
+# Ecuación de regresión estimada y prueba de significancia
 RLS <- lm(Densidad~Concentracion,data=Datos)
-RLS
-
-# Prueba de significancia
 summary(RLS)
 
 # *** Esta variable explicativa tiene un efecto bastante significativo en la variable respuesta.
@@ -55,9 +51,7 @@ plot(Densidad~Concentracion,data=Datos,pch=16)
 abline(RLS,lwd=2)
 
 # Diagrama de dispersión con la linea de regresión estimada (Derecha) 
-
 library(ggplot2)
-
 ggplot(Datos,aes(Concentracion,Densidad)) +
   geom_point() +
   geom_smooth(method='lm', se=FALSE, color='red') +
