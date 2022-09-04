@@ -1,7 +1,9 @@
-# Programa para determinar la densidad de la disolución y de los sólidos
+################################################
+##### DENSIDAD DE LA DISOLUCIÓN Y DE LOS SÓLIDOS
+################################################
 
 # Paqueterías
-library ( plotrix ) # Para obtener la incertidumbre
+library (plotrix) # Para obtener la incertidumbre
 
 # Datos
 datos <- c(11,21,19,18,51,51,71) # << Insertar datos aquí (g/ml)
@@ -15,7 +17,49 @@ inc = std.error (datos) # Incertidumbre (g/ml)
 c_inc = inc*1000 # Incertidumbre (kg/cm^3)
 
 # Resultados
-cat("Densidad promedio:", prom , "g/ml =", c_prom, "kg/m^3 \n")
-cat("Desviación estándar:", desvm , "g/ml =", c_desvm, "kg/m^3 \n")
-cat("Incertidumbre:", inc , "g/ml =", c_inc, "kg/m^3 \n")
+cat("Densidad promedio:", prom, "g/ml =", c_prom, "kg/m^3 \n")
+cat("Desviación estándar:", desvm, "g/ml =", c_desvm, "kg/m^3 \n")
+cat("Incertidumbre:", inc, "g/ml =", c_inc, "kg/m^3 \n")
 cat("La densidad de la disolución es:", prom, "+-" , inc, "g/ml =", c_prom, "+-", c_inc, "kg/m^3" )
+
+###################################
+##### REGRESIÓN LINEAL SIMPLE (RLS)
+###################################
+
+# Datos
+Concentracion <- c(10,15,20,25,30,35) << Insertar datos aquí
+Densidad <- c(1.037141,1.055616,1.084557,1.115044,1.109821,1.113654) << Insertar datos aquí
+
+Datos <- data.frame(Concentracion,Densidad)
+
+# Ecuación de regresión estimada
+RLS <- lm(Densidad~Concentracion,data=Datos)
+RLS
+
+# Prueba de significancia
+summary(RLS)
+
+# *** Esta variable explicativa tiene un efecto bastante significativo en la variable respuesta.
+# ** Esta variable explicativa tiene un efecto muy significativo en la variable respuesta.
+# * Esta variable explicativa tiene un efecto significativo en la variable respuesta.
+# . Esta variable explicativa tiene un efecto algo significativo en la variable respuesta.
+# Esta variable explicativa tiene un efecto nada significativo en la variable respuesta.
+
+# Conclusión
+# De acuerdo con lo anterior, la concentración tiene un efecto muy significativo en la densidad de una disolución. Por tanto, la concentración es bastante importante para el modelo lineal.
+
+# En la conclusión final no se incluye la significancia del intercepto (densidad).
+
+# Diagrama de dispersión con la linea de regresión estimada (Izquierda)
+plot(Densidad~Concentracion,data=Datos,pch=16)
+abline(RLS,lwd=2)
+
+# Diagrama de dispersión con la linea de regresión estimada (Derecha) 
+
+library(ggplot2)
+
+ggplot(Datos,aes(Concentracion,Densidad)) +
+  geom_point() +
+  geom_smooth(method='lm', se=FALSE, color='red') +
+  labs(x='Concentración / % [m/v]', y='Densidad / [g/ml]', title='Relación entre la densidad de una disolución y su concentración') +
+  theme(plot.title = element_text(hjust=0.5, size=12)) 
