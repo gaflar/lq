@@ -20,7 +20,7 @@ c_inc = inc*1000 # Incertidumbre (kg/cm^3)
 cat("Densidad promedio:", prom, "g/ml =", c_prom, "kg/m^3 \n")
 cat("Desviación estándar:", desvm, "g/ml =", c_desvm, "kg/m^3 \n")
 cat("Incertidumbre:", inc, "g/ml =", c_inc, "kg/m^3 \n")
-cat("La densidad de la disolución es:", prom, "+-" , inc, "g/ml =", c_prom, "+-", c_inc, "kg/m^3" )
+cat("La densidad es:", prom, "+-" , inc, "g/ml =", c_prom, "+-", c_inc, "kg/m^3" )
 
 ###################################
 ##### REGRESIÓN LINEAL SIMPLE (RLS)
