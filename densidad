@@ -35,22 +35,11 @@ Datos <- data.frame(Concentracion,Densidad)
 RLS <- lm(Densidad~Concentracion,data=Datos)
 summary(RLS)
 
-# *** Esta variable explicativa tiene un efecto bastante significativo en la variable respuesta.
-# ** Esta variable explicativa tiene un efecto muy significativo en la variable respuesta.
-# * Esta variable explicativa tiene un efecto significativo en la variable respuesta.
-# . Esta variable explicativa tiene un efecto algo significativo en la variable respuesta.
-# Esta variable explicativa tiene un efecto nada significativo en la variable respuesta.
-
-# Conclusión
-# De acuerdo con lo anterior, la concentración tiene un efecto muy significativo en la densidad de una disolución. Por tanto, la concentración es bastante importante para el modelo lineal.
-
-# En la conclusión final no se incluye la significancia del intercepto (densidad).
-
-# Diagrama de dispersión con la linea de regresión estimada (Izquierda)
+# Diagrama de dispersión con la linea de regresión estimada sencillo (Izquierda)
 plot(Densidad~Concentracion,data=Datos,pch=16)
 abline(RLS,lwd=2)
 
-# Diagrama de dispersión con la linea de regresión estimada (Derecha) 
+# Diagrama de dispersión con la linea de regresión estimada con más detalle (Derecha) 
 library(ggplot2)
 ggplot(Datos,aes(Concentracion,Densidad)) +
   geom_point() +
